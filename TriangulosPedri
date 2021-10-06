@@ -1,0 +1,42 @@
+@FXML
+private void teclaPulsada1(KeyEvent event) {
+
+
+
+if (!event.getCharacter().matches("[0-9]")) {
+event.consume();
+}
+
+
+
+String lado1 = lad1.getText();
+String lado2 = lad2.getText();
+String lado3 = lad3.getText();
+
+
+
+if (!lado1.equals("") && !lado2.equals("") && !lado3.equals("")) {
+int nlado1 = Integer.parseInt(lado1);
+int nlado2 = Integer.parseInt(lado2);
+int nlado3 = Integer.parseInt(lado3);
+
+
+
+if (nlado1 + nlado2 > nlado3 && nlado1 + nlado3 > nlado2 && nlado2 + nlado3 > nlado1) {
+if (lado1.equals(lado2) && lado1.equals(lado3)) {
+label.setText("Equilatero");
+} else if (lado1.equals(lado2) || lado1.equals(lado3) || lado2.equals(lado3)) {
+label.setText("Isosceles");
+} else {
+label.setText("Escaleno");
+}
+} else {
+label.setText("No es un triangulo");
+}
+
+
+
+} else {
+label.setText("No hay datos suficientes");
+}
+}
