@@ -1,0 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package triangulos;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+
+/**
+ *
+ * @author alumno
+ */
+public class FXMLDocumentController implements Initializable {
+
+    @FXML
+    private TextField text1;
+
+    @FXML
+    private TextField text2;
+
+    @FXML
+    private TextField text3;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private void handleButtonAction(KeyEvent event) {
+
+        //if (!event.getCharacter().matches("[0-9]")) {
+        //event.consume();
+        //}
+        String valor1 = text1.getText(); //+ event.getCharacter();
+        String valor2 = text2.getText(); //+ event.getCharacter();
+        String valor3 = text3.getText(); //+ event.getCharacter();
+
+        if (valor1.equals("") || valor2.equals("") || valor3.equals("")) {
+            label.setText("No hay datos suficientes");
+
+            //int valorn1 = Integer.parseInt(text1.getText());
+            //int valorn2 = Integer.parseInt(text2.getText());
+            //int valorn3 = Integer.parseInt(text3.getText());
+            //if (valorn1 + valorn2 > valorn3 && valorn2 + valorn3 > valorn1 && valorn1 + valorn3 > valorn2) {
+            //} else {
+            //  label.setText("No es un triangulo");
+            //}
+        } else {
+            //resultado = .getText() + event.getCharacter();
+            label.setText(" ");
+            if (valor1.equals(valor2) && valor1.equals(valor3)) {
+                label.setText("Equilatero");
+            } else if (valor1.equals(valor2) || valor1.equals(valor3) || valor3.equals(valor2)) {
+                label.setText("Isosceles");
+            } else {
+                label.setText("Escaleno");
+            }
+
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+
+}
