@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestorAbout.about">
+   <top>
+      <Pane fx:id="pnlAbout" prefHeight="249.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgViewAbout" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true">
+               <image>
+                  <Image url="/gestorResources/bombastic.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <TextField alignment="CENTER" prefHeight="29.0" prefWidth="600.0" text="Copyright  DAM2 21/22" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <TextArea prefHeight="200.0" prefWidth="200.0" text="Esta aplicacion ha sido realizada por Alen Tokalic , esta diseñada para permitir crear , modificar y borrar archivos" wrapText="true" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
