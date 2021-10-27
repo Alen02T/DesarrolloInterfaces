@@ -41,10 +41,17 @@ public class FXMLAbrirController implements Initializable {
     //private void imprimir(File fichero){
     //}
     
+    
+    //Este codigo de aqui sirve para poder identificar mas tarde y asignarle la ventana correspondiente
+    public static int CodigoVentana = 0 ; 
+    
+    
     @FXML
     private TilePane tlPane;
     
-
+    
+   
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,11 +101,11 @@ public class FXMLAbrirController implements Initializable {
        
         
         
-         
+    //Esto es para el archivo
     menuItem1.setOnAction(event ->{
-      
+      CodigoVentana=1;
           try{
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("menu_contextual.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestorMenu/menu_contextual.fxml"));
               Parent root = loader.load();
               Stage stage = new Stage();
               
@@ -110,10 +117,30 @@ public class FXMLAbrirController implements Initializable {
           }
     });
     
-        
+    //Esto es para el directorio
+     menuItem2.setOnAction(event ->{
+      CodigoVentana=2;
+          try{
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestorMenu/menu_contextual.fxml"));
+              Parent root = loader.load();
+              Stage stage = new Stage();
+              
+              //stage.initModality(Modality.APPLICATION_MODAL);
+              stage.setScene(new Scene(root));
+              stage.show();
+          }catch(Exception a){
+             a.printStackTrace();
+          }
+    });
+    
+        tlPane.setOnMousePressed((event) -> {
+                if (contextMenu.isShowing()) {
+                    contextMenu.hide();
+                }
+            });
   
-        
-        
+        //Esto es para esconder el contextMenu 
+        //contextMenu.hide();
  tlPane.setOnContextMenuRequested((ContextMenuEvent e) -> {
             contextMenu.show(tlPane,e.getScreenX(),e.getScreenY());
          });

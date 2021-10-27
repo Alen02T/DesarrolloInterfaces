@@ -6,27 +6,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestorMenu.FXMLMenuController">
    <top>
       <BorderPane prefHeight="35.0" prefWidth="589.0" BorderPane.alignment="CENTER">
          <right>
-            <Button mnemonicParsing="false" text="Create" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnCreate" disable="true" mnemonicParsing="false" onMouseClicked="#onCreate" text="Create" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Button mnemonicParsing="false" text="Cancel" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onMouseClicked="#cerrar" text="Cancel" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create " BorderPane.alignment="CENTER" />
+            <Text fx:id="textCreate" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </top>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" BorderPane.alignment="CENTER" />
+            <Text fx:id="txtName" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <TextField prefHeight="26.0" prefWidth="391.0" BorderPane.alignment="CENTER" />
+            <TextField fx:id="txtValue" onKeyReleased="#valores" prefHeight="26.0" prefWidth="391.0" BorderPane.alignment="CENTER" />
          </center>
          <left>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
