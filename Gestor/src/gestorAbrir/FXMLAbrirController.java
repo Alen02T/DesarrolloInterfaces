@@ -6,6 +6,7 @@
 package gestorAbrir;
 
 import gestor.Gestor;
+import gestorMenu.FXMLMenuController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -37,11 +38,6 @@ import javafx.stage.Stage;
  */
 public class FXMLAbrirController implements Initializable {
     
-    //Posible funcion para posteriormente imprimir
-    //private void imprimir(File fichero){
-    //}
-    
-    
     //Este codigo de aqui sirve para poder identificar mas tarde y asignarle la ventana correspondiente
     public static int CodigoVentana = 0 ; 
     
@@ -50,12 +46,21 @@ public class FXMLAbrirController implements Initializable {
     private TilePane tlPane;
     
     
-   
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //tlPane.getChildren().clear();
+        
+
+        dibujar();
+    
+        
+    }
+    
+    
+    
+    public void dibujar(){
+        tlPane.getChildren().clear();
            
         File path = new File("/home/alen/NetBeansProjects/Gestor/FILES");
         File[] archivos = path.listFiles();
@@ -106,8 +111,10 @@ public class FXMLAbrirController implements Initializable {
       CodigoVentana=1;
           try{
               FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestorMenu/menu_contextual.fxml"));
+              FXMLMenuController c = (FXMLMenuController) loader.getController();
               Parent root = loader.load();
               Stage stage = new Stage();
+              c.recibir(this);
               
               //stage.initModality(Modality.APPLICATION_MODAL);
               stage.setScene(new Scene(root));
@@ -122,9 +129,10 @@ public class FXMLAbrirController implements Initializable {
       CodigoVentana=2;
           try{
               FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestorMenu/menu_contextual.fxml"));
+              FXMLMenuController c = (FXMLMenuController) loader.getController();
               Parent root = loader.load();
               Stage stage = new Stage();
-              
+              c.recibir(this);
               //stage.initModality(Modality.APPLICATION_MODAL);
               stage.setScene(new Scene(root));
               stage.show();
@@ -132,23 +140,24 @@ public class FXMLAbrirController implements Initializable {
              a.printStackTrace();
           }
     });
-    
+     
+     
+     
+     
+     //Esto es para esconder el contextMenu 
+        //contextMenu.hide();
         tlPane.setOnMousePressed((event) -> {
                 if (contextMenu.isShowing()) {
                     contextMenu.hide();
                 }
             });
   
-        //Esto es para esconder el contextMenu 
-        //contextMenu.hide();
+       
  tlPane.setOnContextMenuRequested((ContextMenuEvent e) -> {
             contextMenu.show(tlPane,e.getScreenX(),e.getScreenY());
          });
-        
     
-        
     }
-    
-    
+   
 
 }
