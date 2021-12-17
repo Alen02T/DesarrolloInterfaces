@@ -17,14 +17,15 @@
           </Menu>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Guardar" />
-                  <MenuItem mnemonicParsing="false" text="Borrar" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuGuardar" text="Guardar" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuBorrar" text="Borrar" />
                   <MenuItem mnemonicParsing="false" onAction="#MenuAbrir" text="Abrir" />
+                  <MenuItem mnemonicParsing="false" onAction="#MenuNewFile" text="New File" />
                </items></Menu>
         </menus>
       </MenuBar>
    </top>
    <center>
-      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

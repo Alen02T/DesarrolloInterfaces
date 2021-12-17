@@ -39,7 +39,7 @@ public class Menu extends Application{
         stage.show();
         //stage.setOnCloseRequest(e -> Platform.exit());
         
-    stage.show();
+   
     }
 
     /**

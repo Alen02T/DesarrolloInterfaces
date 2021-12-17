@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gestor;
-
+import Common.Constants;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +23,14 @@ public class Gestor extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("NUEVO ARCHIVO");
         stage.show();
         stage.setOnCloseRequest(e -> Platform.exit());
+        
+      
+        
+        
+        Constants.Main=stage;
     }
 
     /**

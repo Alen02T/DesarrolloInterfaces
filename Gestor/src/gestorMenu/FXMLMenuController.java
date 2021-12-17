@@ -5,15 +5,16 @@
  */
 package gestorMenu;
 
+import Common.Constants;
 import gestorAbrir.FXMLAbrirController;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,7 +23,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  *
@@ -30,6 +30,8 @@ import javafx.stage.WindowEvent;
  */
 public class FXMLMenuController implements Initializable {
 
+
+    
     @FXML
     private Button btnCreate;
     
@@ -38,6 +40,7 @@ public class FXMLMenuController implements Initializable {
     
     @FXML
     private TextField txtValue;
+    
     
     
     @FXML 
@@ -63,27 +66,17 @@ public class FXMLMenuController implements Initializable {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         //cierra el stage
         stage.close();
-        
-    
     }
-    
-    
-    
-    
-    
-   
             
     @FXML
     public void cargarMenuFile(){
         if(gestorAbrir.FXMLAbrirController.CodigoVentana==1){
             textCreate.setText("Create File");
-            
-            
         }
      }
+    
     @FXML
     public void cargarMenuDirectory(){
-       
         if(gestorAbrir.FXMLAbrirController.CodigoVentana==2){
             textCreate.setText("Create Directory");
         }
@@ -109,19 +102,27 @@ public class FXMLMenuController implements Initializable {
     
     @FXML
     private void onCreate(MouseEvent event){
-        
-      
-        
        if(gestorAbrir.FXMLAbrirController.CodigoVentana==1){    
         //Utilizo un try y un catch para crear el archivo  
-            
+           
+        //File archivo = new File(Constants.path + "/" + txtValue.getText() + ".txt");
+              
             try{
-                Path ruta = Paths.get("/home/alen/NetBeansProjects/Gestor/FILES/"+txtValue.getText()+".txt");
-                //String fileName = "/home/alen/NetBeansProjects/Gestor/FILES/"+texto;
-                //Files.createDirectories(fileName);
-                Files.createFile(ruta);
-                aController.dibujar();
-                System.out.println("Se ha creado el archivo ");
+               
+                File myObj = new File(Constants.path +"/"+ txtValue.getText()+".txt");
+                myObj.createNewFile();
+                
+               
+                FileWriter myWriter = new FileWriter(myObj);
+                myWriter.write(Constants.TextArea);
+                myWriter.close();
+                
+                //Hay un error en el aController.dibujar() que se encarga de actualizar el menu
+                try{
+                 aController.dibujar();
+                }catch(Exception a){}
+
+                System.out.println("Se ha creado el archivo");
                    
                 
                 //Las dos lineas de abajo cierran el panel 
@@ -131,17 +132,15 @@ public class FXMLMenuController implements Initializable {
                     //stage.setOnCloseRequest();
                     
                     stage.close();
-            
-                    
-                    
             }catch(IOException e){
-                e.printStackTrace();
+                e.getMessage();
             }
             
        }else{
-           //Utilizo un try y un catch para crear el archivo  
+           //Utilizo un try y un catch para crear carpetas  
            try{
-                Path ruta = Paths.get("/home/alen/NetBeansProjects/Gestor/FILES/"+txtValue.getText());
+                Path ruta = Paths.get(Constants.path +"/"+ txtValue.getText());
+                System.out.println(ruta);
                 //String fileName = "/home/alen/NetBeansProjects/Gestor/FILES/"+texto;
                 Files.createDirectories(ruta);
                 //Files.createFile(ruta);
@@ -166,14 +165,16 @@ public class FXMLMenuController implements Initializable {
         aController=controlador;
     }
     
+    // recibe y almacena el string "Crear ..."
+    public void recibir(String tit) {
+        textCreate.setText(tit);
+    }
     
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      cargarMenuDirectory();
-      cargarMenuFile();
-
-       
+        cargarMenuFile();
+        cargarMenuDirectory();
     }
 
 }
