@@ -68,6 +68,7 @@ public class FXMLDocumentController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Inicia Sesión");
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
 
 //        Constants.Inicio=stage;

@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,8 +55,8 @@ public class FXMLLoginController implements Initializable {
             prop.load(input);
 
             //get the property value and print it out
-            System.out.println(prop.getProperty("dbpassword"));
-            System.out.println(prop.getProperty("dbuser"));
+            //System.out.println(prop.getProperty("dbpassword"));
+            //System.out.println(prop.getProperty("dbuser"));
            //System.out.println(prop.getProperty("db.password"));
 
 
@@ -67,6 +68,7 @@ public class FXMLLoginController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setTitle("Administrador");
                 stage.setScene(new Scene(root));
+                stage.setResizable(false);
                 stage.show();
                 
                 ((Node)(event.getSource())).getScene().getWindow().hide();
@@ -83,13 +85,27 @@ public class FXMLLoginController implements Initializable {
     }
     
     
+    @FXML
+    private void User(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ExamenTurnitin.class.getResource("/examenturnitin/FXMLDocument.fxml"));
+
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Inicia Sesión");
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+
+//        Constants.Inicio=stage;
+//        Constants.Main.close();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
-
-        
-           
         
     }
 

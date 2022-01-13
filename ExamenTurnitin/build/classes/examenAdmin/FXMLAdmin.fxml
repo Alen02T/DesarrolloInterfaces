@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="692.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examenAdmin.FXMLAdminController">
     <children>
-      <Button layoutY="1.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="173.0" text="User" />
+      <Button layoutY="1.0" mnemonicParsing="false" onAction="#User" prefHeight="63.0" prefWidth="173.0" text="User" />
       <Button layoutX="173.0" layoutY="1.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="173.0" text="Admin" />
       <Pane layoutY="617.0" prefHeight="75.0" prefWidth="875.0" style="-fx-background-color: black;">
          <children>
@@ -17,6 +17,6 @@
          </children>
       </Pane>
       <Label fx:id="labelCredenciales" layoutX="420.0" layoutY="404.0" textFill="#f50808" />
-      <TilePane fx:id="tlPane" layoutX="320.0" layoutY="64.0" prefHeight="553.0" prefWidth="875.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0" />
+      <TilePane fx:id="tlPane" layoutX="119.0" layoutY="143.0" prefHeight="407.0" prefWidth="637.0" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="143.0" />
     </children>
 </AnchorPane>
